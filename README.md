@@ -6,5 +6,14 @@ For simplicity, this is intended to be run on a Raspberry Pi connected to the sa
 This is work in progress. The intention was to get something up and running fast before T CrB errupts. The main usecase is to let the rtelescope record images as long as possible and even unattended. The code can be customized to then wake up the user or send messages out in case it detects a change in brightness that warrants human inspection.
 
 
+Installing required software:
+
+1) siril
+
+Siril (and importantly its command line variant siril-cli) can be installed from the Raspberry Pi OS repository :
+
+sudo apt-get install siril
+
+
 
 
