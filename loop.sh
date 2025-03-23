@@ -9,6 +9,13 @@ webdir=${5:-/var/www/htdocs/T_Cr}
 archive=${6:-/media/disk1/T_CrB/archive}
 
 
+mkdir -p inputs
+mkdir -p work/inputs
+mkdir -p work/green
+mkdir -p work/analysis
+
+
+
 while [[ 1 ]] ; do
 
 ./get_files.py "$target" inputs $nrstack
