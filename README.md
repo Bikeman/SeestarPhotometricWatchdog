@@ -14,6 +14,20 @@ Siril (and importantly its command line variant siril-cli) can be installed from
 
 sudo apt-get install siril
 
+NOTE: the script are written for the rather old version of Siril that is included in the 
+Raspberry Pi OS "Bookworm" repüository (at the time of writing). For newer versions, the code 
+in the scr folder might need adjustments 
+
+2) astap
+
+...
+
+3) stilts 
+
+...
+
+sudo apt-get install stilts 
+
 
 
 
