@@ -1,0 +1,5 @@
+requires 1.0.0
+convert input -out=inputs
+cd inputs
+seqextract_Green input
+exit
