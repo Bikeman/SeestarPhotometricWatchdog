@@ -49,8 +49,11 @@ This is used to copy image files from the Seestar as they are acquired.
 ```sudo apt-get install python3-smbc```
 
 
-   
+5) Optional : tools for playing example sound file in OGG format
 
+```sudo apt-get install vorbis-tools```
+
+ 
 Customizing the scripts:
 ========================
 TODO....
