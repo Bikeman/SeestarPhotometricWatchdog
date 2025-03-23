@@ -9,7 +9,7 @@ This is work in progress. The intention was to get something up and running fast
 Installing required software:
 =============================
 
-1) siril
+1) Siril
 
 Siril (and importantly its command line variant siril_cli) can be installed from the Raspberry Pi OS repository :
 
@@ -19,8 +19,9 @@ NOTE: the script are written for the rather old version of Siril that is include
 Raspberry Pi OS "Bookworm" repository (at the time of writing). For newer versions, the code 
 in the scr folder might need adjustments. 
 
-2) astap
-For  ASTAP and its comamnd line interface astap-cli, wee need a newer version than the one provided by the "Bookworm" repository. I suggest to follow install instruction on
+2) ASTAP
+
+For  ASTAP and its command line interface astap-cli, wee need a newer version than the one provided by the "Bookworm" repository. I suggest to follow install instruction on
 
 At the time of writing:
 
@@ -34,11 +35,21 @@ unzip astap_command-line_version_Linux_aarch64.zip
 cp astap_cli /opt/astap/
 ```
 
-3) stilts
+3) Stilts
+
 For cross matching tables and to generate diagnostic plots, we use stilts, the command-line sister-tool of "Topcat".
 This software uses JAVA and will install quite a few dependent packages, so installation might take some time.
 
 ```sudo apt-get install stilts``` 
+
+4) SMB client for Python
+
+This is used to copy image files from the Seestar as they are acquired.
+
+```sudo apt-get install python3-smbc```
+
+
+   
 
 Customizing the scripts:
 ========================
