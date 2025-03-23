@@ -7,27 +7,45 @@ This is work in progress. The intention was to get something up and running fast
 
 
 Installing required software:
+=============================
 
 1) siril
 
-Siril (and importantly its command line variant siril-cli) can be installed from the Raspberry Pi OS repository :
+Siril (and importantly its command line variant siril_cli) can be installed from the Raspberry Pi OS repository :
 
-sudo apt-get install siril
+```sudo apt-get install siril```
 
 NOTE: the script are written for the rather old version of Siril that is included in the 
-Raspberry Pi OS "Bookworm" repüository (at the time of writing). For newer versions, the code 
-in the scr folder might need adjustments 
+Raspberry Pi OS "Bookworm" repository (at the time of writing). For newer versions, the code 
+in the scr folder might need adjustments. 
 
 2) astap
+For  ASTAP and its comamnd line interface astap-cli, wee need a newer version than the one provided by the "Bookworm" repository. I suggest to follow install instruction on
 
-...
+At the time of writing:
 
-3) stilts 
+```
+wget https://altushost-swe.dl.sourceforge.net/project/astap-program/linux_installer/astap_armhf.deb -O astap_armhf.deb
+wget https://master.dl.sourceforge.net/project/astap-program/star_databases/v50_star_database.deb -O v50_star_database.deb
+wget https://master.dl.sourceforge.net/project/astap-program/linux_installer/astap_command-line_version_Linux_aarch64.zip
 
-...
+sudo dpkg -i astap_armhf.deb v50_star_database.deb
+unzip astap_command-line_version_Linux_aarch64.zip
+cp astap_cli /opt/astap/
+```
 
-sudo apt-get install stilts 
+3) stilts
+For cross matching tables and to generate diagnostic plots, we use stilts, the command-line sister-tool of "Topcat".
+This software uses JAVA and will install quite a few dependent packages, so installation might take some time.
+
+```sudo apt-get install stilts``` 
+
+Customizing the scripts:
+========================
+TODO....
 
 
-
+Using the script:
+==================
+TODO: ....
 
