@@ -58,6 +58,17 @@ Customizing the scripts:
 ========================
 TODO....
 
+Checking the Seestar configuration
+==================================
+TODO ...
+
+* Seestar will make new images accessible to other computers on the same network in folders named TARGET_sub where TARGET is either the name of  the catalog object used to point the Seestar, or the custom object that you defined yourself (by specifying coordinates). The default settings in the script assume you are pointing at "T CrB".
+* You need to configure Seestar so it retains all "good" sub-frames when stacking.
+* Depending on the weather forecast, do not forget to turn on the anti-dew heater if that might help to keep the optics clear
+* You can use the Seestar App's "plan feature" to make Seestar observe for a certain time window, and then close it's arm again (e.g. begin the observation when T CrB becomes vissible from your observation site, and end the observation run when the sun sets or the star gets to low over the horizon
+
+  
+
 
 Using the script:
 ==================
