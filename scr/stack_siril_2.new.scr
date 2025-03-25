@@ -1,0 +1,5 @@
+requires 1.0.0
+setfindstar -sigma=0.2 -roundness=0
+register Green_input
+stack r_Green_input mean none -nonorm
+exit

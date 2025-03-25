@@ -23,7 +23,7 @@ stilts tpipe in=work/analysis/matched_ref_photom.csv cmd="addcol MAG -2.5*log10(
        out=work/analysis/r_Green_input_stacked_calib_mag.csv
 
 
-now=`ls -tr1 inputs/*.fit | head -n 1 | xargs -Ixxx fitsheader xxx | grep "DATE-OBS"|cut -f2 -d\' | cut -f 1 -d.`
+now=`ls -tr1 inputs/*.fit* | head -n 1 | xargs -Ixxx fitsheader xxx | grep "DATE-OBS"|cut -f2 -d\' | cut -f 1 -d.`
 
 vmag=`egrep "^V," work/analysis/r_Green_input_stacked_calib_mag.csv  | cut -f 18 -d,`
 nr_comps_ok=`egrep "^C" work/analysis/r_Green_input_stacked_calib_mag.csv  | cut -f20 -d, | grep "OK"| wc -l`

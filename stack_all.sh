@@ -4,7 +4,7 @@
 
 rm -f work/green/*;rm -f work/*;rm -f work/inputs/*
 
-cp inputs/*.fit work/
+cp inputs/*.fit* work/
 
 
 siril-cli -d `pwd`/work/ -s `pwd`/scr/stack_siril_1.scr
