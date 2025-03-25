@@ -45,7 +45,7 @@ new_files=subs[0:nr_latest]
 
 # exit if the previously youngest file is still part of this list
 if youngest_prev_file in new_files or len(new_files) != nr_latest:
-	print('not enough new files yet, exiting')
+	print('not enough new files yet, waiting for more to be available')
 	sys.exit(1)
 
 # wait some time as file might still be busy
