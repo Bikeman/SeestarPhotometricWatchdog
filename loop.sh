@@ -24,8 +24,8 @@ if [ $? -eq 0 ]
 then
   ./stack_all.sh
   ./matcher.sh "$target" $mincomps
-  ./publish.sh "$webdir" "$archive"
-  echo "Digested new data at $(date -u)"
+  ./publish.sh "$target" "$webdir" "$archive"
+  echo "Processed new data at $(date -u)"
   sleep $waitnewframes
 else
   sleep 60

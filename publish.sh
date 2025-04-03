@@ -1,8 +1,11 @@
 #!/bin/bash
 
-webdir=${1}
-archive=${2}
+target=${1}
+webdir=${2}
+archive=${3}
 
+
+target_web=`echo $target | tr \\   \_ `
 
 status=`tail -n 1 work/analysis/status_summary.csv | cut -f1 -d,`
 
@@ -18,16 +21,25 @@ if [ "$status" = "BRIGHT" ]; then
    nohup ogg123 snd/klaxon.ogg snd/klaxon.ogg snd/klaxon.ogg &
 fi
 
-status=`tail -n 1 work/analysis/status_summary.csv | cut -f1 -d,`
 
-timeout -s 9 60  cp  work/analysis/checkplot.png  $webdir/T_CrB-latest.png
-timeout -s 9 60  cp  work/analysis/status_summary.csv $webdir/T_CrB-latest-status.csv
+# if star rises so fast that it saturates, the photometry status might be UNKNown
+# so if the comp stars are ok  but the target star vcannot be measured ==> sound alarm
+# comment this out if you don't want this behaviour
 
-timeout -s 9 60  cp  work/analysis/checkplot.png  $webdir/T_CrB-latest-$status.png
-timeout -s 9 60  cp  work/analysis/status_summary.csv $webdir/T_CrB-latest-status-$status.csv
+if [ "$status" = "UNKN" ]; then
+# play klaxon sound three times in the background
+   nohup ogg123 snd/klaxon.ogg snd/klaxon.ogg snd/klaxon.ogg &
+fi
+
+
+timeout -s 9 60  cp  work/analysis/checkplot.png  $webdir/${target_web}-latest.png
+timeout -s 9 60  cp  work/analysis/status_summary.csv $webdir/${target_web}-latest-status.csv
+
+timeout -s 9 60  cp  work/analysis/checkplot.png  $webdir/${target_web}-latest-$status.png
+timeout -s 9 60  cp  work/analysis/status_summary.csv $webdir/${target_web}-latest-status-$status.csv
 
 
 now=`date -u --iso-8601=seconds`
-timeout -s 9 30  cp work/analysis/checkplot.png $archive/plot-${now}.png
-timeout -s 9 30  cp work/analysis/status_summary.csv $archive/status-${now}.csv
+timeout -s 9 30  cp work/analysis/checkplot.png $archive/${target_web}-plot-${now}.png
+timeout -s 9 30  cp work/analysis/status_summary.csv $archive/${target_web}-status-${now}.csv
 
