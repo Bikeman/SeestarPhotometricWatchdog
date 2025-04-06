@@ -3,13 +3,16 @@
 target=$1
 quorum_comps=$2
 
+# matching tolerance in arcsec
+mtol=6
+
 annotation="BETA TESTING!!"
 
 rm work/analysis/matched_ref_photom.csv
 
 stilts tmatch2 in1=photo_ref.csv in2=work/green/r_Green_input_stacked.csv out=work/analysis/matched_ref_photom.csv ofmt=csv \
 matcher=sky \
-   params=4 \
+   params=$mtol \
    values1='RA DEC' \
    values2='ra[0..360] dec[0..360]' \
    ocmd="addcol IMAG -2.5*log10(flux);addcol ZP REFMAG-IMAG"
