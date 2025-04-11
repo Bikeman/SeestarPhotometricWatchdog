@@ -150,7 +150,7 @@ Yes, that should work in principle, nothing in this project is specific to the R
 No, this is not advisable: *T CrB* is a really bright star and in the default configuration of the Seestar (10s exposure time for frames, gain setting at 80), there is not that much headroom left before the star will saturate the sensor. This means there is a limit to how bright the Seestar can measure the star with the software used in this solution. I would recommend to set the threshold to no smaller value than 8 mag.
 
 
-## The script tells me that T CrB is now brithening, but when I look at the live view in the Seestar App, *T CrB* looks as bright as always. Should I go to bed again?
+## The script tells me that T CrB is now brightening, but when I look at the live view in the Seestar App, *T CrB* looks as bright as always. Should I go to bed again?
 Careful! What you are looking at in the Seestar App is probably the *live-stacking view*, in other words the averaged images of the current session which might actually have started several hours ago! A recent change in brightness of *T CrB* will not be immediately visible in this view.
 To check the validity of the alarm, you will want to check the *latest single frames* in the "T CrB_sub" folder on the network driver that the Seestar is exporting. They are stored there both as FITS and JPEG files.
 
