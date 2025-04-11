@@ -72,7 +72,7 @@ TODO ...
 * Depending on the weather forecast, do not forget to turn on the anti-dew heater if that might help to keep the optics clear
 * You can use the Seestar App's "plan feature" to make Seestar observe for a certain time window, and then close it's arm again (e.g. begin the observation when T CrB becomes vissible from your observation site, and end the observation run when the sun sets or the star gets to low over the horizon
 
-Customizing the scripts and cofiguration:
+Customizing the scripts and configuration:
 =========================================
 As a watchdog for *T CrB*, used on a Raspberry Pi, the script shoudl run out-of-the-box without any need for changes. However there can be a few reasons why you might want to customize the scripts and configuration files #
 
