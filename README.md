@@ -61,6 +61,11 @@ This is used to copy image files from the Seestar as soon as they are acquired.
 ```sudo apt-get install vorbis-tools```
 
  
+7) Optional : webserver to allow remote access (in your LAN) to the most recently generated data products 
+
+```sudo apt-get install lighttpd```
+
+This will install a tiny web server on the Raspberry Pi. This is probably an option for more advanvced users.
 
 
 Checking the Seestar configuration
@@ -153,4 +158,15 @@ No, this is not advisable: *T CrB* is a really bright star and in the default co
 ## The script tells me that T CrB is now brightening, but when I look at the live view in the Seestar App, *T CrB* looks as bright as always. Should I go to bed again?
 Careful! What you are looking at in the Seestar App is probably the *live-stacking view*, in other words the averaged images of the current session which might actually have started several hours ago! A recent change in brightness of *T CrB* will not be immediately visible in this view.
 To check the validity of the alarm, you will want to check the *latest single frames* in the "T CrB_sub" folder on the network driver that the Seestar is exporting. They are stored there both as FITS and JPEG files.
+
+
+
+# Maintenance: Periodic Tasks you need to perform to keep the pipeline happy
+
+## Freeing storage on the Seestar device
+...
+## Managing the archived data.
+...
+## Checking for updates
+...
 
