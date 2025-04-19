@@ -13,7 +13,7 @@ brightness that warrants human inspection.
 Disclaimer: This sofware is intended to be used in connection with the ZWO Seestar S50 product, but was developed indenpendently. Teh author of thsi software is not related to ZWO. 
 
 
-#Installing required software:
+# Installing required software:
 =============================
 
 1) Siril
@@ -76,7 +76,7 @@ This is used to copy image files from the Seestar as soon as they are acquired.
 This will install a tiny web server on the Raspberry Pi. This is probably an option for more advanvced users.
 
 
-#Checking the Seestar configuration
+# Checking the Seestar configuration
 ==================================
 
 Seestar will make new images accessible to other computers on the same network in folders named TARGET_sub where TARGET is either the name of  the catalog object used to point the Seestar, or the custom object that you defined yourself (by specifying coordinates). The default settings in the script assume you are pointing at "T CrB".
@@ -90,7 +90,7 @@ There are a few settings that you have to check in the configuration settings of
 observation run when the sun sets or the star gets too low over the horizon.
 
 
-#Customizing the scripts and configuration:
+# Customizing the scripts and configuration:
 =========================================
 As a watchdog for *T CrB*, used on a Raspberry Pi, the script shouls run out-of-the-box without any need 
 for changes. However there can be a few reasons why you might want to customize the scripts and 
@@ -107,7 +107,7 @@ configuration files
 In all of these cases, you will want to read the Adv_Documentation.md to get a deeper understanding of the configuration and inner workings of this pipeline. 
 
 
-#Using the script:
+# Using the script:
 ==================
 The pipeline runs in a continuous loop, which is started by a call to the (surprise!) loop.sh script followed by six comamnd line arguments like this:
 
@@ -167,8 +167,8 @@ You will want to occasionally check for updates of the scripts in this repositor
 
 
 
-##FAQ
-===
+# FAQ
+=====
 
 ## How do I access the Seestar images remotely while it is observing?
 See the tutorial in this video `https://h5.seestar.com/course/79218`
