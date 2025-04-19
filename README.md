@@ -10,8 +10,10 @@ The main usecase is to let the telescope record images as long as possible and e
 The code can be customized to then wake up the user or send messages out in case it detects a change in 
 brightness that warrants human inspection.
 
+Disclaimer: This sofware is intended to be used in connection with the ZWO Seestar S50 product, but was developed indenpendently. Teh author of thsi software is not related to ZWO. 
 
-Installing required software:
+
+#Installing required software:
 =============================
 
 1) Siril
@@ -74,7 +76,7 @@ This is used to copy image files from the Seestar as soon as they are acquired.
 This will install a tiny web server on the Raspberry Pi. This is probably an option for more advanvced users.
 
 
-Checking the Seestar configuration
+#Checking the Seestar configuration
 ==================================
 
 Seestar will make new images accessible to other computers on the same network in folders named TARGET_sub where TARGET is either the name of  the catalog object used to point the Seestar, or the custom object that you defined yourself (by specifying coordinates). The default settings in the script assume you are pointing at "T CrB".
@@ -88,7 +90,7 @@ There are a few settings that you have to check in the configuration settings of
 observation run when the sun sets or the star gets too low over the horizon.
 
 
-Customizing the scripts and configuration:
+#Customizing the scripts and configuration:
 =========================================
 As a watchdog for *T CrB*, used on a Raspberry Pi, the script shouls run out-of-the-box without any need 
 for changes. However there can be a few reasons why you might want to customize the scripts and 
@@ -105,7 +107,7 @@ configuration files
 In all of these cases, you will want to read the Adv_Documentation.md to get a deeper understanding of the configuration and inner workings of this pipeline. 
 
 
-Using the script:
+#Using the script:
 ==================
 The pipeline runs in a continuous loop, which is started by a call to the (surprise!) loop.sh script followed by six comamnd line arguments like this:
 
@@ -139,8 +141,39 @@ Note: If you start the script in a shell (perhaps via ssh) and the close the she
 instead which will start the loop script in the background and will keep it alive even if the shell that it was started in is terminated. To stop it again you would then have to use the ``kill`` command. An alternative to this is using tools like ``screen`` or ``tmux`` which allow to atatch to and detach from sessions without killing them. 
 
 
-FAQ
+
+# Maintenance: Periodic tasks you need to perform to keep the pipeline happy
+
+## Freeing storage on the Seestar device
+The scripts in this solution use strictly *read-only* access to your Seestar. It will fetch images from
+the smart telescope over the network, but it will *never* delete those files. This means that the files
+(usually several new files are created every minute) will slowly consume the storage space on the
+Seestar device, up top the point when no new images can be taken! The storage is sufficient for several
+observation nights, but you should probably make it a habit to remove the image files (see the first
+entry in the FAQ below) from the device after each observation night. It is probably a good idea to move the
+files to some safe storage space and keep them there for a while instead of just deleting them: once
+*T Cr_B* goes nova, it might be interesting to have data available that shows what the star did in the
+hours and days before the eruption.
+
+
+## Managing the archived data.
+The same holds for the archive space used for the pipeline's data products: once in a while you
+will want to tidy up this directory (configured on the command line of the `loop.sh` script) to prevent
+an excessive number of files piling up there.
+
+## Checking for updates
+You will want to occasionally check for updates of the scripts in this repository.
+
+
+
+
+##FAQ
 ===
+
+## How do I access the Seestar images remotely while it is observing?
+See the tutorial in this video `https://h5.seestar.com/course/79218`
+
+
 
 ## Can I use this under Windows?
 Not yet, at least not out-of-the-box. I tested this pipeline exclusively under Linux on a Raspberry Pi, 
@@ -149,17 +182,21 @@ but getting it to run under Windows should be relatively painless if you are fam
 
 ## Can I use this on a Linux PC other than the Raspberry Pi
 Yes, that should work in principle, nothing in this project is specific to the Raspberry Pi, except the instructions given here to install the software dependencies. E.g. if you want to install to a system with x86 CPU, you need to download different files for the ASTAP sofware as described on the ASTAP website.
-  
-
-## How do I access the Seestar images remotely while it is observing?
-See the tutorial in this video `https://h5.seestar.com/course/79218`
-
 
 
 ## How can I check that the script is actually working ok?
 To make sure the alarm mechanism works, you can temporarily change the configuration 
 of the thresholds that will raise the alarm. See the file Adv_Documentation.md for details 
 on the format of the file `photo_ref.csv` taht contains these  settings.
+
+You can test the playback of the alarm sound separately by executing
+
+```./test_alarm_snd.sh```
+
+If you do not hear any alarm sound, check the volume level set both on your (active) speakers 
+connected to the Raspberry Pi and the volume level in the sound mixer application of the 
+Rasperry Pi itself. 
+ 
 
 ## I only want to be notified when the T CrB Nova is already really bright, to be on the safe side. Should I set the alarm threshold to something like mag 6 or 5 ?
 No, this is not advisable: *T CrB* is a relatively bright star even in quiescence and in the default 
@@ -178,25 +215,4 @@ To check the validity of the alarm, you will want to check the *latest single fr
 FITS and JPEG files.
 
 
-# Maintenance: Periodic tasks you need to perform to keep the pipeline happy
-
-## Freeing storage on the Seestar device
-The scripts in this solution use strictly *read-only* access to your Seestar. It will fetch images from
-the smart telescope over the network, but it will *never* delete those files. This means that the files 
-(usually several new files are created every minute) will slowly consume the storage space on the 
-Seestar device, up top the point when no new images can be taken! The storage is sufficient for several 
-observation nights, but you should probably make it a habit to remove the image files (see the first 
-entry in this FAQ) from the device after each observation night. It is probably a good idea to move the 
-files to some safe storage space and keep them there for a while instead of just deleting them: once 
-*T Cr_B* goes nova, it might be interesting to have data available that shows what the star did in the 
-hours and days before the eruption.
- 
-
-## Managing the archived data.
-The same holds for the archive space used for the pipleine's dataproducts: once in a while you 
-will want to tidy up this directory (configured on the command line of the `loop.sh` script) to prevent
-an excessive number of files piling up there.
-
-## Checking for updates
-You will want to occasionally check for updates of the scripts in this repository.
 
