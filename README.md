@@ -14,7 +14,6 @@ Disclaimer: This sofware is intended to be used in connection with the ZWO Seest
 
 
 # Installing required software:
-=============================
 
 1) Siril
 
@@ -77,7 +76,6 @@ This will install a tiny web server on the Raspberry Pi. This is probably an opt
 
 
 # Checking the Seestar configuration
-==================================
 
 Seestar will make new images accessible to other computers on the same network in folders named TARGET_sub where TARGET is either the name of  the catalog object used to point the Seestar, or the custom object that you defined yourself (by specifying coordinates). The default settings in the script assume you are pointing at "T CrB".
 
@@ -91,7 +89,7 @@ observation run when the sun sets or the star gets too low over the horizon.
 
 
 # Customizing the scripts and configuration:
-=========================================
+
 As a watchdog for *T CrB*, used on a Raspberry Pi, the script shouls run out-of-the-box without any need 
 for changes. However there can be a few reasons why you might want to customize the scripts and 
 configuration files 
@@ -108,7 +106,7 @@ In all of these cases, you will want to read the Adv_Documentation.md to get a d
 
 
 # Using the script:
-==================
+
 The pipeline runs in a continuous loop, which is started by a call to the (surprise!) loop.sh script followed by six comamnd line arguments like this:
 
 ```./loop.sh [TARGET] [SUBS_TO_STACK] [MIN_COMPS] [WAIT_FOR_FRAMES] [WEBDIR] [ARCHIVE_DIR] ```
@@ -168,7 +166,7 @@ You will want to occasionally check for updates of the scripts in this repositor
 
 
 # FAQ
-=====
+
 
 ## How do I access the Seestar images remotely while it is observing?
 See the tutorial in this video `https://h5.seestar.com/course/79218`
