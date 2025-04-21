@@ -1,5 +1,5 @@
 # Advanced User Documentation
-=============================
+
 
 This page contains documentation that might be of interest for users who want to change the provided scripts
 according to tehir needs, either to improve them, them adapt to their own equipment and IT environment or who 
