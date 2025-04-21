@@ -142,6 +142,10 @@ instead which will start the loop script in the background and will keep it aliv
 
 # Maintenance: Periodic tasks you need to perform to keep the pipeline happy
 
+## Educate people (and animals) within hearing distance of the alarm that this is nothing no panic about 
+
+You don't want to scare the hell out of people who happen to hear the alarm and do not know what this is all about. I also trained my pets (cats) not to be scared by the sound by playing it once per week for some time so they get used to it.
+ 
 ## Freeing storage on the Seestar device
 The scripts in this solution use strictly *read-only* access to your Seestar. It will fetch images from
 the smart telescope over the network, but it will *never* delete those files. This means that the files
