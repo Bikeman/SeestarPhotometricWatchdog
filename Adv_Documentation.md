@@ -87,15 +87,53 @@ e) Status **BRIGHT** : The target star's brighness is now exceeding the configur
 
 
 ## Analysis status file
-....
+In addition to the human-readable checkplot, a short machine-readable ASCII CSV file is generated 
+each time a new stacked image is analysed. 
+Here is an example:
 
+```
+ASTATUS,VSTATUS,NRCOMP,NRCOMP_OK,TIME,VMAG,EOM
+OK,OK,4,4,2025-04-20T02:59:44,9.842619950475298,1
+```
 
+The meaning of the columns is a follows:
 
-### Analysis status file for the current alarm status
-....
+* `ASTATUS`: The "alarm status" is one of the following strings (see description above): **OK**, 
+**PHOTOM_UNCERT**, **UNKN**, **FAINT**, **BRIGHT**. The decision to trigger an alarm or not should be based on this field.
+
+* `VSTATUS`: The analysis status for the target star alone. This field can hold values  **OK**, **FAINT**, **BRIGHT**, **UNKN**, meaning that taken for itself, the measured brightness of the target star is 
+as expected, fainter than expected , brighter than expected or unknown (undetected), respectively. This field is set without applying a quality check on the consistency of the vcomparison stars and is less
+reliable for triggering alarms. If the alarm status (see previous field) is set to **PHOTOM_UNCERT** 
+because of diecrepancies in the comparison star measurements, the field `VSTATUS` will still tell you 
+the status of teh target star measurement, though.
+
+* `NRCOMP` is the number of comparison stars configured in the `photo_ref.csv` file 
+
+* `NRCOMP_OK` is the number of comparison stars that are measured within the tolerances configured
+in the `photo_ref.csv` configuration file.
+
+* `TIME` is a time stamp in UTC for the measurement
+
+* `VMAG` is the V band magnitude measured for the target star
+
+* `EOM` is always set to "1" and can be used as an end-of-message marker to guard against partially read 
+file content when streaming this file over a webserver (when newly created files overwrite the previous version)
+
  
 
+### Analysis status file for the current alarm status
 
+For streaming via a webserver, the current analysis status file (see above) is always written twice: 
 
+* one copy is named `{TARGET}-latest-status.csv`, with target replaced by the name of the target star. 
+For convenience, any spaces in the target name are replaced by underscore `_` characters, so an example file copied to the webserver 
+could be `T_CrB-latest-status.csv` . 
+This file will **overwrite** any previously generated file!
+
+* a second copy with the same content is generated with a filename containing the value of the alarm status as a postfix, e.g.
+`T_CrB-latest-status-OK.csv`  if the brightness of the target is within expectations, `T_CrB-latest-status-BRIGHT.csv` if it brighter than the configured threshold magnitude etc. 
+The rationale of this naming is that, for example, after an alarm is triggered, you can quickly check 
+when the target star was in the expected state the last time or if there had been states **PHOTOM_UNCERT**
+rececently, by looking at the contents of the files `T_CrB-latest-status-OK.csv` and `T_CrB-latest-status-PHOTOM_UNCERT.csv`. 
 
 
