@@ -23,11 +23,15 @@ C,124,239.89250183,25.7381382,12.366,12.0,12.7
 
 The first line defines column names for the table columns that are separated by comma. 
 
-The first `type` column's vale  must be either a "V" or "C", to mark the varibale (target star) or several 
-comparison stars, respectively. It is strongly recommended to define more than two comparison stars to allow the sofware to better assess the quality of the frames.
+The first `type` column's value  must be either a "V" or "C", to mark the entry as a variable (target star) or one of several 
+comparison stars, respectively. It is strongly recommended to define more than two comparison stars 
+to allow the sofware to better assess the quality of the frames automatically. 
+However, make sure all configured comarison stars will fit into the frame taken by the Seestar, 
+also taking field rotation during an observation session into account (when the Seestar is used in 
+Alt/Az mode as it usually is).
 
 The `label` column contains a string with the label of the star (target star or camparison star) to be used 
-for the disgnostic plot (see below). Traditionally, the label for comparison stars (as used in AAVSO finder charts) 
+for the diagnostic plot (see below). Traditionally, the label for comparison stars (as used in AAVSO finder charts) 
 is the V magnitude multiplied by 10 and rounded to an integer value. 
 
 The next two cloumns, `RA` and `DEC` hold the coordinates of the respective star in J2000 equatorial 
